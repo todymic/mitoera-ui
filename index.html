@@ -445,11 +445,9 @@
             <span>Mitoera</span>
         </a>
         <nav class="menu">
-            <a href="#editor">Éditeur</a>
-            <a href="#features">Fonctionnalités</a>
-            <a href="#how">Comment ça marche</a>
-            <a href="#contact">Contact</a>
+            <a href="#pricing">Pricing</a>
             <a href="https://docs.mitoera.com" target="_blank">Documentation</a>
+            <a href="#contact">Contact</a>
         </nav>
         <div class="nav-cta">
             <a href="https://bo.mitoera.com/login" class="btn btn-primary">Se connecter</a>
@@ -457,11 +455,9 @@
         </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#editor">Éditeur</a>
-        <a href="#features">Fonctionnalités</a>
-        <a href="#how">Comment ça marche</a>
-        <a href="#contact">Contact</a>
+        <a href="#pricing">Pricing</a>
         <a href="https://docs.mitoera.com" target="_blank">Documentation</a>
+        <a href="#contact">Contact</a>
         <a href="https://bo.mitoera.com/login" class="btn btn-primary">Se connecter</a>
     </div>
 </header>
@@ -592,13 +588,28 @@
         </ol>
     </section>
 
+    <section class="block wrap" id="pricing" style="padding-bottom:0"></section>
+
     <section class="block wrap" id="contact">
-        <div class="cta-band reveal">
-            <span class="eyebrow eyebrow" style="color:#f9d9b8;justify-content:center">Prêt à commencer ?</span>
-            <h2>Votre prochaine salle <em style="color:#f9d9b8">mérite ce plan.</em></h2>
-            <p>Décrivez votre projet, nous vous accompagnons de l'estimation à la mise en vente.</p>
-            <a href="#" class="btn btn-primary">Prenez place →</a>
+        <div class="cta-band reveal" style="text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+            <div>
+                <span class="eyebrow" style="color:#f9d9b8">Prêt à commencer ?</span>
+                <h2 style="margin-top:12px">Votre prochaine salle <em style="color:#f9d9b8">mérite ce plan.</em></h2>
+                <p style="margin-bottom:0">Décrivez votre projet, nous vous accompagnons de l'estimation à la mise en vente.</p>
+            </div>
+            <form id="contactForm" style="display:flex;flex-direction:column;gap:14px" onsubmit="submitContact(event)">
+                <input type="text" name="name" placeholder="Votre nom" required style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.12);color:#fff;font-size:.95rem;outline:none;backdrop-filter:blur(4px)">
+                <input type="email" name="email" placeholder="Votre email" required style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.12);color:#fff;font-size:.95rem;outline:none;backdrop-filter:blur(4px)">
+                <textarea name="message" placeholder="Décrivez votre projet…" rows="4" required style="padding:13px 16px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.12);color:#fff;font-size:.95rem;outline:none;resize:vertical;backdrop-filter:blur(4px);font-family:inherit"></textarea>
+                <button type="submit" class="btn btn-primary" id="contactBtn" style="align-self:flex-start">Nous contacter →</button>
+                <p id="contactMsg" style="display:none;color:#f9d9b8;font-size:.9rem;margin:0"></p>
+            </form>
         </div>
+        <style>
+            #contactForm input::placeholder,#contactForm textarea::placeholder{color:rgba(255,255,255,0.55)}
+            #contactForm input:focus,#contactForm textarea:focus{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.18)}
+            @media(max-width:768px){.cta-band[style*="grid"]{grid-template-columns:1fr!important}}
+        </style>
     </section>
 </main>
 
@@ -785,6 +796,37 @@
             phone.classList.remove('sc-phone--hidden');
         } else {
             phone.classList.add('sc-phone--hidden');
+        }
+    }
+
+    async function submitContact(e) {
+        e.preventDefault();
+        const btn = document.getElementById('contactBtn');
+        const msg = document.getElementById('contactMsg');
+        const form = document.getElementById('contactForm');
+        btn.disabled = true;
+        btn.textContent = 'Envoi…';
+        const data = Object.fromEntries(new FormData(form));
+        try {
+            const res = await fetch('https://api.mitoera.com/api/public/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            if (res.ok) {
+                form.reset();
+                msg.style.display = 'block';
+                msg.textContent = '✓ Message envoyé ! Nous vous répondrons très bientôt.';
+                btn.textContent = 'Envoyé ✓';
+            } else {
+                throw new Error();
+            }
+        } catch {
+            btn.disabled = false;
+            btn.textContent = 'Nous contacter →';
+            msg.style.display = 'block';
+            msg.style.color = '#fca5a5';
+            msg.textContent = 'Une erreur est survenue, veuillez réessayer.';
         }
     }
 </script>
