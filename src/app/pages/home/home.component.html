@@ -1,0 +1,197 @@
+<section class="hero">
+  <div class="wrap hero-inner reveal">
+    <span class="eyebrow" style="justify-content:center">Réservation de salle</span>
+    <h1>Réservation de place en ligne<br><em>par plan de salle interactif.</em></h1>
+    <p class="lead">Mitoera installe un plan de salle interactif directement sur votre site : stade, théâtre, amphithéâtre. Vos visiteurs réservent et paient siège par siège, en temps réel, sans quitter votre site.</p>
+    <div class="hero-actions">
+      <a routerLink="/" fragment="contact" class="btn btn-primary">Commencer gratuitement</a>
+      <a routerLink="/" fragment="editor" class="btn btn-outline">Voir l'éditeur en action ↓</a>
+    </div>
+  </div>
+  <div class="trust wrap reveal d1">
+    <span class="trust-chip">🔌 S'installe sur votre site</span>
+    <span class="trust-chip">🔒 Verrouillage en temps réel</span>
+    <span class="trust-chip">💳 Paiements locaux &amp; internationaux</span>
+  </div>
+</section>
+
+<!-- Éditeur -->
+<section class="block wrap" id="editor">
+  <div class="head reveal">
+    <span class="eyebrow" style="justify-content:center">L'éditeur de plan de salle</span>
+    <h2>Votre salle. <em>Prenez place.</em></h2>
+    <p>Dessinez votre salle avec l'éditeur, publiez le widget sur votre site. Vos visiteurs réservent siège par siège, en temps réel.</p>
+  </div>
+  <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:28px">
+    <button class="sc-tab sc-tab--active" (click)="switchTab('editor', $any($event.target).closest('button'))">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      Éditeur de plan
+    </button>
+    <button class="sc-tab" (click)="switchTab('render', $any($event.target).closest('button'))">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+      Widget de réservation
+    </button>
+  </div>
+  <div class="sc-showcase reveal">
+    <div class="sc-browser">
+      <div class="sc-browser__bar">
+        <span class="sc-dot" style="background:#ef6a4d"></span>
+        <span class="sc-dot" style="background:#f2913a"></span>
+        <span class="sc-dot" style="background:#3bb273"></span>
+        <div class="sc-browser__url" id="scUrl">mitoera.com/admin/plans/palais-de-sport</div>
+      </div>
+      <div class="sc-browser__body">
+        <picture id="scEditor">
+          <source srcset="/assets/editor.webp" type="image/webp">
+          <img src="/assets/editor.png" alt="Éditeur de plan de salle Mitoera" loading="lazy" style="width:100%;display:block">
+        </picture>
+        <picture id="scRender" style="display:none">
+          <source srcset="/assets/renderer_2.webp" type="image/webp">
+          <img src="/assets/renderer_2.png" alt="Widget de réservation Mitoera" loading="lazy" style="width:100%;display:block">
+        </picture>
+      </div>
+    </div>
+    <div class="sc-phone sc-phone--hidden" id="scPhone">
+      <div class="sc-phone__btn sc-phone__btn--silent"></div>
+      <div class="sc-phone__btn sc-phone__btn--vol-up"></div>
+      <div class="sc-phone__btn sc-phone__btn--vol-down"></div>
+      <div class="sc-phone__btn sc-phone__btn--power"></div>
+      <div class="sc-phone__inner">
+        <div class="sc-phone__island"></div>
+        <img class="sc-phone__screen" src="/assets/mobile.png" alt="Widget mobile Mitoera" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- Editor démo -->
+  <div class="editor reveal" style="margin-top:40px">
+    <div class="editor__toolbar">
+      <div class="tb-group">
+        <div class="tb-title">Outils</div>
+        <button class="tool-btn" id="addRowBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Ajouter rangée
+        </button>
+        <button class="tool-btn" id="resetToolBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+          Réinitialiser
+        </button>
+      </div>
+      <div class="tb-group">
+        <div class="tb-title">Catégories</div>
+        <div class="cat-row" data-pulse-category="vip">
+          <span class="cat-dot cat-dot--vip"></span>
+          <span class="cat-row__name">VIP</span>
+          <span class="cat-row__price">45 €</span>
+        </div>
+        <div class="cat-row" data-pulse-category="standard">
+          <span class="cat-dot cat-dot--standard"></span>
+          <span class="cat-row__name">Standard</span>
+          <span class="cat-row__price">25 €</span>
+        </div>
+        <div class="cat-row" data-pulse-category="balcon">
+          <span class="cat-dot cat-dot--balcon"></span>
+          <span class="cat-row__name">Balcon</span>
+          <span class="cat-row__price">15 €</span>
+        </div>
+      </div>
+      <div class="tb-group">
+        <div class="tb-title">Zoom</div>
+        <div class="zoom-row">
+          <button class="zoom-btn" id="zoomOut">−</button>
+          <span class="zoom-label" id="zoomLabel">100%</span>
+          <button class="zoom-btn" id="zoomIn">+</button>
+          <button class="reset-link" id="resetZoom">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="editor__canvas">
+      <div class="stage-label">SCÈNE</div>
+      <div class="stage-wrap" id="stageWrap"></div>
+    </div>
+    <div class="editor__sidebar">
+      <h3>Sélection</h3>
+      <ul class="cart-list" id="cartList"></ul>
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">0 €</strong>
+      </div>
+      <button class="btn btn-primary" style="width:100%" id="addToCartBtn">Réserver →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Fonctionnalités -->
+<section class="block wrap" id="features">
+  <div class="head reveal">
+    <span class="eyebrow" style="justify-content:center">Fonctionnalités</span>
+    <h2>Au-delà du plan de salle.</h2>
+  </div>
+  <div class="services">
+    <div class="svc reveal d1">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <h3>Temps réel</h3>
+      <p>Une place réservée se verrouille instantanément pour tout le monde. Zéro double encaissement.</p>
+    </div>
+    <div class="svc reveal d2">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 9h20"/></svg></div>
+      <h3>Paiements locaux &amp; internationaux</h3>
+      <p>Mobile Money, cartes bancaires et virements — adaptés à votre marché, où qu'il soit.</p>
+    </div>
+    <div class="svc reveal d3">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM18 18h3v3h-3z"/></svg></div>
+      <h3>Contrôle d'accès QR</h3>
+      <p>Un billet, un QR code, un scan à l'entrée. Fini les billets papier dupliqués.</p>
+    </div>
+    <div class="svc reveal d4">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V9M9.5 21V3M16 21v-6"/></svg></div>
+      <h3>Tableau de bord</h3>
+      <p>Suivez les ventes salle par salle, catégorie par catégorie, en direct.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Comment ça marche -->
+<section class="block wrap" id="how">
+  <div class="head reveal">
+    <span class="eyebrow" style="justify-content:center">Comment ça marche</span>
+    <h2>De la salle vide à la salle vendue.</h2>
+  </div>
+  <ol class="how__steps">
+    <li class="how__step reveal">
+      <div class="how__num">1</div>
+      <h3>Créez votre plan</h3>
+      <p>Reproduisez votre salle avec l'éditeur : rangées, catégories, tarifs — en quelques minutes.</p>
+    </li>
+    <li class="how__step reveal d1">
+      <div class="how__num">2</div>
+      <h3>Intégrez le module</h3>
+      <p>Collez quelques lignes de code sur votre site : le plan apparaît directement chez vous.</p>
+    </li>
+    <li class="how__step reveal d2">
+      <div class="how__num">3</div>
+      <h3>Encaissez en direct</h3>
+      <p>Suivez chaque vente en temps réel et scannez les billets à l'entrée.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- Contact -->
+<section class="block wrap" id="contact">
+  <div class="cta-band" style="text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+    <div>
+      <span class="eyebrow" style="color:#f9d9b8">Prêt à commencer ?</span>
+      <h2 style="margin-top:12px">Votre prochaine salle <em style="color:#f9d9b8">mérite ce plan.</em></h2>
+      <p style="margin-bottom:0">Décrivez votre projet, nous vous accompagnons de l'estimation à la mise en vente.</p>
+    </div>
+    <form class="contact-form" (submit)="submitContact($event)">
+      <input type="text" name="name" placeholder="Votre nom" required>
+      <input type="email" name="email" placeholder="Votre email" required>
+      <textarea name="message" placeholder="Décrivez votre projet…" rows="4" required></textarea>
+      <button type="submit" class="btn btn-primary" id="contactBtn">Nous contacter →</button>
+      <p id="contactMsg" style="display:none;color:#f9d9b8;font-size:.9rem;margin:0"></p>
+    </form>
+  </div>
+</section>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LcmI5stAAAAAPX33gdcNMel6OMVDzrbsx6V2gAg" async defer></script>

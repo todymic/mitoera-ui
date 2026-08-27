@@ -1,0 +1,118 @@
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.65)">FAQ</span>
+    <h1>Questions fréquentes</h1>
+    <p class="sub">Tout ce qu'il faut savoir sur le fonctionnement, la facturation et les plans Mitoera.</p>
+  </div>
+</section>
+
+<section class="faq-sections">
+  <div class="wrap">
+
+    <div class="faq-group">
+      <div class="faq-group-title">
+        <div class="faq-group-icon" style="background:rgba(15,118,144,.1)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--sea)" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h2>Facturation</h2>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Qu'est-ce qu'un siège "confirmé" (booked) ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Mitoera distingue deux statuts : le <strong>hold</strong> (panier en cours, gratuit) et le <strong>booked</strong> (réservation finalisée, facturée). Seul le passage au statut booked — déclenché par votre back-end lors de la confirmation de paiement — est décompté de votre quota.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Le hold est-il facturé ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Non, jamais. Le hold est entièrement gratuit, qu'il aboutisse à une réservation ou qu'il expire. Seul le passage au statut <strong>booked</strong> consomme votre quota.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Que se passe-t-il si je dépasse mon quota annuel ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Aucune interruption de service. Chaque siège confirmé au-delà du quota est facturé <strong>0,15 €</strong> et regroupé sur une facture mensuelle. Vous êtes notifié en temps réel depuis le tableau de bord.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Les sièges non utilisés sont-ils remboursés en fin d'année ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Le quota prépayé est valable sur l'année civile et non remboursable. Si vous n'avez pas épuisé votre quota à renouvellement, contactez-nous — nous étudions les reports au cas par cas.</p></div>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">
+        <div class="faq-group-icon" style="background:rgba(242,145,58,.1)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h2>Plans et abonnements</h2>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Quelle est la différence entre les plans Mora et Soa ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p><strong>Mora (300 €/an)</strong> inclut 2 500 sièges — soit 0,12 €/siège, −20 % par rapport au tarif à l'usage. <strong>Soa (575 €/an)</strong> inclut 5 000 sièges — soit 0,115 €/siège, −23 %. Soa ajoute un support prioritaire.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Puis-je changer de plan en cours d'année ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Oui. Vous pouvez monter en plan à tout moment — la différence de quota est créditée prorata temporis. Contactez-nous et nous gérons la transition sans interruption.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Y a-t-il un plan pour tester avant de s'engager ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Oui — l'environnement sandbox est gratuit et illimité. Dessinez vos plans, intégrez le widget, testez les réservations sans aucun engagement. Aucune carte bancaire requise.</p></div>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">
+        <div class="faq-group-icon" style="background:rgba(239,106,77,.1)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h2>Intégration technique</h2>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Comment intégrer le widget sur mon site ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Une seule balise <code>&lt;script&gt;</code> suffit. Consultez la <a href="https://docs.mitoera.com" style="color:var(--sea);font-weight:700">documentation</a> pour l'intégration complète avec les callbacks <code>onReady</code>, <code>onSeatSelected</code> et les méthodes publiques.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Comment restaurer la sélection après une redirection (ex. connexion) ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Utilisez la méthode <strong>selectSeats(keys)</strong> combinée au localStorage. Avant la redirection, sauvegardez les clés ; au retour dans <code>onReady</code>, appelez <code>chart.selectSeats(keys)</code>. Exemple complet dans la <a href="https://docs.mitoera.com" style="color:var(--sea);font-weight:700">documentation</a>.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" (click)="toggleFaq($any($event.target).closest('button'))">
+          Le widget fonctionne-t-il sur mobile ?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Oui. Le widget adapte l'expérience en trois étapes sur mobile : vue d'ensemble → zoom section → zoom détail avec sélection. Pinch-to-zoom et pan tactile natifs.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="wrap" style="padding-bottom:100px">
+  <div class="cta-band">
+    <h2>Vous n'avez pas trouvé votre réponse ?</h2>
+    <p>Contactez-nous directement — nous répondons généralement sous 24 h.</p>
+    <a routerLink="/" fragment="contact" class="btn btn-primary">Nous contacter →</a>
+  </div>
+</section>
