@@ -801,6 +801,8 @@
         }
     }
 
+    const RECAPTCHA_SITE_KEY = '6LcmI5stAAAAAPX33gdcNMel6OMVDzrbsx6V2gAg';
+
     async function submitContact(e) {
         e.preventDefault();
         const btn = document.getElementById('contactBtn');
@@ -810,6 +812,8 @@
         btn.textContent = 'Envoi…';
         const data = Object.fromEntries(new FormData(form));
         try {
+            const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' });
+            data.recaptchaToken = token;
             const res = await fetch('https://api.mitoera.com/api/public/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -832,5 +836,6 @@
         }
     }
 </script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcmI5stAAAAAPX33gdcNMel6OMVDzrbsx6V2gAg" async defer></script>
 </body>
 </html>
