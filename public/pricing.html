@@ -182,8 +182,8 @@
 <section class="hero">
     <div class="wrap">
         <span class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.65)">Tarifs</span>
-        <h1>Vous payez ce que<br><em style="color:#f9d9b8">vos clients réservent.</em></h1>
-        <p class="sub">Pas d'abonnement caché. Un quota annuel de sièges prépayé, et rien de plus — sauf si vous dépassez.</p>
+        <h1>Ne payez que<br><em style="color:#f9d9b8">ce que vous vendez.</em></h1>
+        <p class="sub">Pas d'abonnement. Pas de frais cachés. Un quota annuel prépayé, avec une vraie réduction — seul le dépassement est facturé.</p>
 
         <div class="pps" style="flex-direction:row">
             <div>
@@ -191,8 +191,8 @@
             </div>
             <div class="pps-sep"></div>
             <div class="pps-label">
-                <strong>par siège utilisé</strong>
-                <span>Un siège "utilisé" = passage en statut <em style="color:#f9d9b8;font-style:normal">hold</em> ou <em style="color:#f9d9b8;font-style:normal">booked</em></span>
+                <strong>par siège confirmé (booked)</strong>
+                <span>Les holds (paniers en cours) ne sont <em style="color:#f9d9b8;font-style:normal">pas facturés</em> — uniquement les réservations finalisées</span>
             </div>
         </div>
     </div>
@@ -204,7 +204,7 @@
         <div class="plans-intro">
             <span class="eyebrow" style="justify-content:center">Plans prépayés</span>
             <h2>Choisissez votre volume.<br><em>Économisez sur l'année.</em></h2>
-            <p>Achetez un quota annuel de sièges et bénéficiez d'un tarif dégressif. Seul le dépassement est facturé à 0,15 €/siège.</p>
+            <p>Prépayez votre volume annuel et économisez jusqu'à 23 % sur le tarif à l'usage. Les holds ne comptent pas — seules les réservations confirmées sont décomptées.</p>
         </div>
 
         <div class="plans-grid">
@@ -219,11 +219,11 @@
                 <div class="plan-tagline">Pour les organisateurs en croissance — jusqu'à 2 500 places par an.</div>
                 <div class="plan-price-row">
                     <span class="curr">€</span>
-                    <span class="amount">370</span>
+                    <span class="amount">300</span>
                     <span class="period">/ an prépayé</span>
                 </div>
-                <div class="plan-seats">≙ 2 500 sièges inclus — soit <strong>0,148 €/siège</strong></div>
-                <div class="plan-overage">Au-delà du quota : <strong>0,15 € par siège utilisé</strong> supplémentaire, facturé en fin de mois.</div>
+                <div class="plan-seats">≙ 2 500 sièges inclus — soit <strong>0,12 €/siège</strong> <span style="color:var(--sea);font-weight:700">−20 %</span></div>
+                <div class="plan-overage">Au-delà du quota : <strong>0,15 € par siège confirmé</strong> supplémentaire, facturé en fin de mois.</div>
                 <a href="/#contact" class="btn btn-ghost plan-cta">Démarrer avec Mora →</a>
                 <div class="plan-sep"></div>
                 <ul class="plan-features">
@@ -246,11 +246,11 @@
                 <div class="plan-tagline">Pour les salles établies et les événements récurrents — 5 000 places par an.</div>
                 <div class="plan-price-row">
                     <span class="curr" style="color:var(--sun)">€</span>
-                    <span class="amount" style="color:var(--sun)">750</span>
+                    <span class="amount" style="color:var(--sun)">575</span>
                     <span class="period">/ an prépayé</span>
                 </div>
-                <div class="plan-seats">≙ 5 000 sièges inclus — soit <strong>0,15 €/siège</strong></div>
-                <div class="plan-overage">Au-delà du quota : <strong>0,15 € par siège utilisé</strong> supplémentaire, facturé en fin de mois.</div>
+                <div class="plan-seats">≙ 5 000 sièges inclus — soit <strong>0,115 €/siège</strong> <span style="color:var(--sun);font-weight:700">−23 %</span></div>
+                <div class="plan-overage">Au-delà du quota : <strong>0,15 € par siège confirmé</strong> supplémentaire, facturé en fin de mois.</div>
                 <a href="/#contact" class="btn btn-primary plan-cta">Démarrer avec Soa →</a>
                 <div class="plan-sep"></div>
                 <ul class="plan-features">
@@ -271,16 +271,16 @@
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             </div>
             <div>
-                <h3>Qu'est-ce qu'un siège "utilisé" ?</h3>
-                <p>Un siège est comptabilisé dès que son statut change. Concrètement, c'est quand un visiteur exprime une intention réelle — pas un simple clic de curiosité.</p>
+                <h3>Qu'est-ce qu'un siège "confirmé" ?</h3>
+                <p>Seul le statut <strong>booked</strong> est facturé — c'est-à-dire une réservation finalisée par votre back-end. Le hold (panier en cours, bloqué temporairement) est gratuit et ne consomme pas votre quota, même s'il expire.</p>
                 <div class="used-states">
                     <div class="state-pill state-hold">
                         <span class="state-dot"></span>
-                        Hold — siège bloqué temporairement (panier en cours)
+                        Hold — panier en cours · <strong>gratuit</strong>
                     </div>
                     <div class="state-pill state-booked">
                         <span class="state-dot"></span>
-                        Booked — siège confirmé (réservation validée)
+                        Booked — réservation confirmée · <strong>facturé</strong>
                     </div>
                 </div>
             </div>
@@ -298,10 +298,10 @@
         <div class="faq-list">
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                    Un siège hold qui expire est-il quand même facturé ?
+                    Le hold est-il facturé ?
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
-                <div class="faq-a"><p>Oui. Le passage en statut hold correspond à une intention d'achat — le siège est retiré du stock pour les autres acheteurs pendant ce temps. Il est donc compté dans votre quota, même si la réservation n'est pas finalisée.</p></div>
+                <div class="faq-a"><p>Non. Le hold est entièrement gratuit, qu'il expire ou non. Seul le statut <strong>booked</strong> — déclenché par votre back-end lors de la confirmation de paiement — est décompté de votre quota.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
