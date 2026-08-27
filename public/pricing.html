@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pricing — Mitoera</title>
-<meta name="description" content="Choisissez le plan Mitoera adapté à votre activité. Démarrez gratuitement, évoluez selon vos besoins.">
+<meta name="description" content="Payez uniquement les sièges réellement utilisés. Plans Mora et Soa pour tous les organisateurs.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,21 +29,23 @@
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:Tahoma,Geneva,Verdana,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.1;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+    h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.15;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
     a{color:inherit;text-decoration:none}
     img,svg{max-width:100%;display:block}
     em{font-style:italic;color:var(--coral)}
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sea)}
     .eyebrow::before{content:"";width:26px;height:2px;background:var(--sun);border-radius:2px}
-    .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:100px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;text-decoration:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:100px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;text-decoration:none;font-family:inherit}
     .btn-primary{background:var(--sun);color:#fff;box-shadow:0 14px 30px -10px rgba(242,145,58,.7)}
     .btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 40px -12px rgba(242,145,58,.8)}
-    .btn-outline-dark{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-    .btn-outline-dark:hover{transform:translateY(-3px);border-color:var(--ink)}
+    .btn-sea{background:linear-gradient(135deg,var(--sea),var(--sea-deep));color:#fff;box-shadow:0 14px 30px -10px rgba(15,118,144,.5)}
+    .btn-sea:hover{transform:translateY(-3px);box-shadow:0 22px 40px -12px rgba(15,118,144,.6)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+    .btn-ghost:hover{transform:translateY(-3px);border-color:var(--ink)}
 
     /* Header */
-    header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,box-shadow .4s,padding .4s;padding:22px 0;background:rgba(255,253,249,0)}
+    header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,box-shadow .4s,padding .4s;padding:22px 0}
     header.scrolled{background:rgba(255,253,249,.92);backdrop-filter:blur(14px);box-shadow:0 10px 30px -20px rgba(12,34,51,.4);padding:14px 0}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.28rem;color:#fff;transition:color .4s}
@@ -52,81 +54,108 @@
     .menu{display:flex;gap:4px}
     .menu a{padding:8px 16px;border-radius:100px;font-size:.92rem;font-weight:600;color:#fff;transition:background .3s,color .3s}
     header.scrolled .menu a{color:var(--ink)}
-    .menu a:hover{background:rgba(255,255,255,.15)}
-    header.scrolled .menu a:hover{background:var(--sand)}
+    .menu a:hover,.menu a.active{background:rgba(255,255,255,.15)}
+    header.scrolled .menu a:hover,header.scrolled .menu a.active{background:var(--sand);color:var(--sea)}
     .nav-cta{display:flex;align-items:center;gap:14px}
     .nav-cta .btn{padding:11px 22px;font-size:.9rem}
 
     /* Hero */
-    .hero{padding:160px 0 80px;background:radial-gradient(circle at 20% 0%,#123a4d 0%,var(--sea-deep) 45%,var(--ink) 100%);color:#fff;text-align:center}
-    .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:16px}
-    .hero p{font-size:1.1rem;opacity:.85;max-width:540px;margin:0 auto 12px}
-    .toggle-wrap{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:28px;font-size:.9rem;font-weight:600;color:rgba(255,255,255,.75)}
-    .toggle{width:46px;height:26px;border-radius:100px;background:rgba(255,255,255,.2);border:none;cursor:pointer;position:relative;transition:background .3s;flex-shrink:0}
-    .toggle::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .3s var(--ease)}
-    .toggle.annual::after{transform:translateX(20px)}
-    .toggle.annual{background:var(--sun)}
-    .badge-save{background:var(--sun);color:#fff;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:.04em}
+    .hero{padding:150px 0 90px;background:radial-gradient(ellipse at 10% 0%,#123a4d,var(--sea-deep) 50%,var(--ink));color:#fff;text-align:center;position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 100%,rgba(242,145,58,.15),transparent 60%);pointer-events:none}
+    .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);margin:14px 0 18px}
+    .hero .sub{font-size:1.1rem;opacity:.8;max-width:560px;margin:0 auto 36px}
+
+    /* Pay-per-seat banner */
+    .pps{display:inline-flex;align-items:center;gap:16px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:18px 28px;margin:0 auto 60px;position:relative;z-index:1}
+    .pps-price{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:700;color:#fff;line-height:1}
+    .pps-price sup{font-size:1.1rem;vertical-align:top;margin-top:8px;display:inline-block}
+    .pps-sep{width:1px;height:48px;background:rgba(255,255,255,.2)}
+    .pps-label{text-align:left}
+    .pps-label strong{display:block;color:#fff;font-size:.95rem;margin-bottom:2px}
+    .pps-label span{font-size:.8rem;opacity:.65;font-style:italic}
 
     /* Plans */
-    .plans{padding:80px 0 100px}
-    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
-    .plan{background:#fff;border-radius:var(--radius);border:1.5px solid var(--line);padding:36px 32px;position:relative;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
-    .plan:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-    .plan--popular{border-color:var(--sea);box-shadow:0 0 0 4px rgba(15,118,144,.08)}
-    .plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--sea),var(--sea-deep));color:#fff;font-size:.72rem;font-weight:700;padding:4px 16px;border-radius:100px;letter-spacing:.06em;white-space:nowrap}
-    .plan-name{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;margin-bottom:8px}
-    .plan-desc{font-size:.9rem;color:var(--muted);margin-bottom:24px;min-height:40px}
-    .plan-price{margin-bottom:28px}
-    .plan-price .amount{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:700;color:var(--ink);line-height:1}
-    .plan-price .amount span{font-size:1.2rem;vertical-align:top;margin-top:8px;display:inline-block}
-    .plan-price .period{font-size:.85rem;color:var(--muted);margin-top:4px}
-    .plan-price .annual-note{font-size:.78rem;color:var(--sea);font-weight:600;margin-top:2px;min-height:18px}
-    .plan-cta{width:100%;text-align:center;justify-content:center;margin-bottom:28px}
+    .plans-section{padding:80px 0 100px}
+    .plans-intro{text-align:center;margin-bottom:56px}
+    .plans-intro h2{font-size:clamp(1.8rem,3vw,2.5rem);margin:12px 0 16px}
+    .plans-intro p{color:var(--muted);max-width:560px;margin:0 auto}
+    .plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:860px;margin:0 auto}
+
+    .plan{background:#fff;border-radius:var(--radius);border:1.5px solid var(--line);padding:40px 36px;position:relative;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+    .plan:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+    .plan--featured{border-color:var(--sea);background:linear-gradient(160deg,#fff 60%,rgba(15,118,144,.04))}
+    .plan--featured::before{content:"";position:absolute;inset:-1px;border-radius:calc(var(--radius) + 1px);background:linear-gradient(135deg,var(--sea),var(--sea-deep));z-index:-1;opacity:.15;pointer-events:none}
+
+    .plan-tag{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--sea),var(--sea-deep));color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:20px}
+    .plan-name{font-size:1.8rem;margin-bottom:6px}
+    .plan-tagline{font-size:.9rem;color:var(--muted);margin-bottom:28px}
+
+    .plan-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+    .plan-price-row .amount{font-family:'Fraunces',serif;font-size:3rem;font-weight:700;color:var(--sea);line-height:1}
+    .plan-price-row .curr{font-size:1.1rem;color:var(--sea);font-weight:600;align-self:flex-start;padding-top:8px}
+    .plan-price-row .period{font-size:.88rem;color:var(--muted)}
+    .plan-seats{font-size:.88rem;color:var(--ink);font-weight:600;margin-bottom:4px}
+    .plan-overage{font-size:.82rem;color:var(--muted);margin-bottom:32px;padding:10px 14px;background:var(--sand);border-radius:10px;line-height:1.5}
+    .plan-overage strong{color:var(--ink)}
+
+    .plan-cta{width:100%;margin-bottom:28px;font-size:1rem;padding:15px}
     .plan-sep{height:1px;background:var(--line);margin-bottom:24px}
-    .plan-features{list-style:none;display:flex;flex-direction:column;gap:12px}
-    .plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--ink)}
-    .plan-features li::before{content:"";width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--sea),var(--sea-deep));flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;margin-top:2px}
-    .plan-features li.muted{color:var(--muted)}
-    .plan-features li.muted::before{background:var(--line);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+    .plan-features{list-style:none;display:flex;flex-direction:column;gap:11px}
+    .plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem}
+    .plan-features li::before{content:"";width:19px;height:19px;border-radius:50%;flex-shrink:0;margin-top:1px;background:linear-gradient(135deg,var(--sea),var(--sea-deep)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center}
+
+    /* What is "used" */
+    .used-box{max-width:820px;margin:0 auto 80px;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:36px 40px;display:grid;grid-template-columns:auto 1fr;gap:20px 28px;align-items:start}
+    .used-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--sun),var(--coral));display:grid;place-items:center;color:#fff;flex-shrink:0}
+    .used-box h3{font-size:1.15rem;margin-bottom:8px}
+    .used-box p{font-size:.9rem;color:var(--muted);line-height:1.7}
+    .used-states{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .state-pill{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:100px;font-size:.82rem;font-weight:700;border:1.5px solid}
+    .state-hold{background:rgba(242,145,58,.08);color:var(--sun);border-color:rgba(242,145,58,.3)}
+    .state-booked{background:rgba(15,118,144,.08);color:var(--sea);border-color:rgba(15,118,144,.25)}
+    .state-dot{width:7px;height:7px;border-radius:50%;background:currentColor}
 
     /* FAQ */
-    .faq{padding:0 0 100px}
-    .faq .head{text-align:center;margin-bottom:48px}
-    .faq .head h2{font-size:clamp(1.8rem,3vw,2.4rem)}
-    .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+    .faq-section{padding:0 0 100px}
+    .faq-section .head{text-align:center;margin-bottom:48px}
+    .faq-section .head h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:12px}
+    .faq-list{max-width:720px;margin:0 auto}
     .faq-item{border-bottom:1px solid var(--line)}
-    .faq-q{width:100%;background:none;border:none;padding:20px 0;text-align:left;font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-q{width:100%;background:none;border:none;padding:20px 0;text-align:left;font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1rem}
     .faq-q svg{flex-shrink:0;transition:transform .3s var(--ease);color:var(--sea)}
     .faq-item.open .faq-q svg{transform:rotate(45deg)}
     .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
     .faq-item.open .faq-a{max-height:300px}
-    .faq-a p{padding-bottom:20px;color:var(--muted);font-size:.95rem;line-height:1.7}
+    .faq-a p{padding-bottom:20px;color:var(--muted);font-size:.92rem;line-height:1.7}
 
     /* CTA band */
     .cta-band{background:linear-gradient(135deg,var(--sea-deep),var(--sea));border-radius:32px;padding:64px;color:#fff;text-align:center;position:relative;overflow:hidden;margin-bottom:80px}
     .cta-band::before{content:"";position:absolute;bottom:-80px;left:-40px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(242,145,58,.3),transparent 70%)}
     .cta-band h2{color:#fff;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:14px;position:relative}
-    .cta-band p{opacity:.9;max-width:500px;margin:0 auto 28px;position:relative}
+    .cta-band p{opacity:.85;max-width:480px;margin:0 auto 28px;position:relative;font-size:.97rem}
 
     /* Footer */
-    footer{background:var(--ink);color:rgba(255,255,255,.65);padding:56px 0 32px}
-    footer h4{color:#fff;font-family:Tahoma,sans-serif;font-size:.9rem;letter-spacing:.05em;margin-bottom:16px;text-transform:uppercase}
+    footer{background:var(--ink);color:rgba(255,255,255,.6);padding:56px 0 32px}
+    footer h4{color:#fff;font-family:Tahoma,sans-serif;font-size:.88rem;letter-spacing:.06em;margin-bottom:14px;text-transform:uppercase}
     footer a:hover{color:#fff}
     .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-    .fgrid ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:.9rem}
-    .fcopy{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .fgrid ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:.88rem}
+    .fcopy{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.82rem}
 
-    @media(max-width:900px){
+    @media(max-width:840px){
         .plans-grid{grid-template-columns:1fr}
-        .plan--popular{order:-1}
-        .fgrid{grid-template-columns:1fr 1fr}
+        .used-box{grid-template-columns:1fr;gap:16px}
         .cta-band{padding:40px 24px;border-radius:22px}
+        .fgrid{grid-template-columns:1fr 1fr}
+        .pps{flex-direction:column;gap:12px;text-align:center}
+        .pps-sep{width:80px;height:1px}
+        .pps-label{text-align:center}
     }
-    @media(max-width:600px){
-        .hero{padding:130px 0 60px}
+    @media(max-width:580px){
+        .hero h1{font-size:2.2rem}
         .fgrid{grid-template-columns:1fr}
         .menu{display:none}
+        .plan{padding:30px 24px}
     }
 </style>
 </head>
@@ -139,7 +168,7 @@
             <span>Mitoera</span>
         </a>
         <nav class="menu">
-            <a href="/pricing">Pricing</a>
+            <a href="/pricing" class="active">Pricing</a>
             <a href="https://docs.mitoera.com" target="_blank">Documentation</a>
             <a href="/#contact">Contact</a>
         </nav>
@@ -149,145 +178,169 @@
     </div>
 </header>
 
+<!-- Hero -->
 <section class="hero">
     <div class="wrap">
-        <span class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.7)">Tarifs</span>
-        <h1 style="margin-top:12px">Simple, <em style="color:#f9d9b8">transparent.</em></h1>
-        <p>Démarrez gratuitement. Passez à la vitesse supérieure quand vous en avez besoin.</p>
-        <div class="toggle-wrap">
-            <span>Mensuel</span>
-            <button class="toggle" id="billingToggle" onclick="toggleBilling()" aria-label="Facturation annuelle"></button>
-            <span>Annuel <span class="badge-save">-20%</span></span>
+        <span class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.65)">Tarifs</span>
+        <h1>Vous payez ce que<br><em style="color:#f9d9b8">vos clients réservent.</em></h1>
+        <p class="sub">Pas d'abonnement caché. Un quota annuel de sièges prépayé, et rien de plus — sauf si vous dépassez.</p>
+
+        <div class="pps" style="flex-direction:row">
+            <div>
+                <div class="pps-price"><sup>€</sup>0,15</div>
+            </div>
+            <div class="pps-sep"></div>
+            <div class="pps-label">
+                <strong>par siège utilisé</strong>
+                <span>Un siège "utilisé" = passage en statut <em style="color:#f9d9b8;font-style:normal">hold</em> ou <em style="color:#f9d9b8;font-style:normal">booked</em></span>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="plans">
+<!-- Plans -->
+<section class="plans-section">
     <div class="wrap">
+        <div class="plans-intro">
+            <span class="eyebrow" style="justify-content:center">Plans prépayés</span>
+            <h2>Choisissez votre volume.<br><em>Économisez sur l'année.</em></h2>
+            <p>Achetez un quota annuel de sièges et bénéficiez d'un tarif dégressif. Seul le dépassement est facturé à 0,15 €/siège.</p>
+        </div>
+
         <div class="plans-grid">
 
-            <!-- Starter -->
+            <!-- Mora -->
             <div class="plan">
-                <div class="plan-name">Starter</div>
-                <div class="plan-desc">Pour tester et lancer votre premier événement.</div>
-                <div class="plan-price">
-                    <div class="amount"><span>Ar</span> <span id="p0">0</span></div>
-                    <div class="period">par mois</div>
-                    <div class="annual-note" id="n0">&nbsp;</div>
+                <div class="plan-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    Plan Mora
                 </div>
-                <a href="https://bo.mitoera.com/register" class="btn btn-outline-dark plan-cta">Commencer gratuitement</a>
+                <div class="plan-name">Mora</div>
+                <div class="plan-tagline">Pour les organisateurs en croissance — jusqu'à 2 500 places par an.</div>
+                <div class="plan-price-row">
+                    <span class="curr">€</span>
+                    <span class="amount">370</span>
+                    <span class="period">/ an prépayé</span>
+                </div>
+                <div class="plan-seats">≙ 2 500 sièges inclus — soit <strong>0,148 €/siège</strong></div>
+                <div class="plan-overage">Au-delà du quota : <strong>0,15 € par siège utilisé</strong> supplémentaire, facturé en fin de mois.</div>
+                <a href="/#contact" class="btn btn-ghost plan-cta">Démarrer avec Mora →</a>
                 <div class="plan-sep"></div>
                 <ul class="plan-features">
-                    <li>1 plan de salle</li>
-                    <li>Jusqu'à 200 sièges</li>
-                    <li>Widget intégrable</li>
-                    <li>Réservations en temps réel</li>
-                    <li class="muted">Domaine personnalisé</li>
-                    <li class="muted">Support prioritaire</li>
-                    <li class="muted">Statistiques avancées</li>
+                    <li>2 500 sièges utilisés inclus/an</li>
+                    <li>Plans de salle illimités</li>
+                    <li>Widget intégrable sur votre site</li>
+                    <li>Réservations en temps réel (Mercure)</li>
+                    <li>Tableau de bord & statistiques</li>
+                    <li>Support par email</li>
                 </ul>
             </div>
 
-            <!-- Pro -->
-            <div class="plan plan--popular">
-                <div class="plan-badge">Le plus populaire</div>
-                <div class="plan-name">Pro</div>
-                <div class="plan-desc">Pour les organisateurs qui gèrent plusieurs événements.</div>
-                <div class="plan-price">
-                    <div class="amount" style="color:var(--sea)"><span>Ar</span> <span id="p1">49 000</span></div>
-                    <div class="period">par mois</div>
-                    <div class="annual-note" id="n1">&nbsp;</div>
+            <!-- Soa -->
+            <div class="plan plan--featured">
+                <div class="plan-tag" style="background:linear-gradient(135deg,var(--sun),var(--coral))">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Plan Soa — Recommandé
                 </div>
-                <a href="/#contact" class="btn btn-primary plan-cta">Démarrer l'essai</a>
+                <div class="plan-name">Soa</div>
+                <div class="plan-tagline">Pour les salles établies et les événements récurrents — 5 000 places par an.</div>
+                <div class="plan-price-row">
+                    <span class="curr" style="color:var(--sun)">€</span>
+                    <span class="amount" style="color:var(--sun)">750</span>
+                    <span class="period">/ an prépayé</span>
+                </div>
+                <div class="plan-seats">≙ 5 000 sièges inclus — soit <strong>0,15 €/siège</strong></div>
+                <div class="plan-overage">Au-delà du quota : <strong>0,15 € par siège utilisé</strong> supplémentaire, facturé en fin de mois.</div>
+                <a href="/#contact" class="btn btn-primary plan-cta">Démarrer avec Soa →</a>
                 <div class="plan-sep"></div>
                 <ul class="plan-features">
-                    <li>Plans illimités</li>
-                    <li>Jusqu'à 2 000 sièges</li>
-                    <li>Widget intégrable</li>
-                    <li>Réservations en temps réel</li>
-                    <li>Domaine personnalisé</li>
+                    <li>5 000 sièges utilisés inclus/an</li>
+                    <li>Plans de salle illimités</li>
+                    <li>Widget intégrable sur votre site</li>
+                    <li>Réservations en temps réel (Mercure)</li>
+                    <li>Tableau de bord & statistiques</li>
                     <li>Support prioritaire</li>
-                    <li class="muted">Statistiques avancées</li>
-                </ul>
-            </div>
-
-            <!-- Entreprise -->
-            <div class="plan">
-                <div class="plan-name">Entreprise</div>
-                <div class="plan-desc">Pour les grandes salles, stades et réseaux d'événements.</div>
-                <div class="plan-price">
-                    <div class="amount">Sur devis</div>
-                    <div class="period">&nbsp;</div>
-                    <div class="annual-note">&nbsp;</div>
-                </div>
-                <a href="/#contact" class="btn btn-outline-dark plan-cta">Nous contacter</a>
-                <div class="plan-sep"></div>
-                <ul class="plan-features">
-                    <li>Plans illimités</li>
-                    <li>Sièges illimités</li>
-                    <li>Widget intégrable</li>
-                    <li>Réservations en temps réel</li>
-                    <li>Domaine personnalisé</li>
-                    <li>Support dédié (SLA)</li>
-                    <li>Statistiques avancées</li>
                 </ul>
             </div>
 
         </div>
+
+        <!-- What is "used" -->
+        <div class="used-box" style="margin-top:56px">
+            <div class="used-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div>
+                <h3>Qu'est-ce qu'un siège "utilisé" ?</h3>
+                <p>Un siège est comptabilisé dès que son statut change. Concrètement, c'est quand un visiteur exprime une intention réelle — pas un simple clic de curiosité.</p>
+                <div class="used-states">
+                    <div class="state-pill state-hold">
+                        <span class="state-dot"></span>
+                        Hold — siège bloqué temporairement (panier en cours)
+                    </div>
+                    <div class="state-pill state-booked">
+                        <span class="state-dot"></span>
+                        Booked — siège confirmé (réservation validée)
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="faq">
+<!-- FAQ -->
+<section class="faq-section">
     <div class="wrap">
         <div class="head">
             <span class="eyebrow" style="justify-content:center">FAQ</span>
-            <h2 style="margin-top:12px">Questions fréquentes</h2>
+            <h2>Questions fréquentes</h2>
         </div>
         <div class="faq-list">
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                    Puis-je changer de plan à tout moment ?
+                    Un siège hold qui expire est-il quand même facturé ?
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
-                <div class="faq-a"><p>Oui. Vous pouvez passer à un plan supérieur ou inférieur à tout moment. La différence est calculée au prorata du mois en cours.</p></div>
+                <div class="faq-a"><p>Oui. Le passage en statut hold correspond à une intention d'achat — le siège est retiré du stock pour les autres acheteurs pendant ce temps. Il est donc compté dans votre quota, même si la réservation n'est pas finalisée.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                    Le plan Starter est-il vraiment gratuit ?
+                    Que se passe-t-il si je dépasse mon quota ?
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
-                <div class="faq-a"><p>Oui, sans carte de crédit. Le Starter est gratuit sans limite de durée, avec 1 plan de salle et jusqu'à 200 sièges.</p></div>
+                <div class="faq-a"><p>Aucune interruption de service. Chaque siège au-delà du quota est facturé 0,15 € et regroupé sur une facture mensuelle. Vous restez notifié en temps réel de votre consommation depuis le tableau de bord.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                    Comment fonctionne la facturation annuelle ?
+                    Les sièges non utilisés sont-ils remboursés en fin d'année ?
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
-                <div class="faq-a"><p>En choisissant la facturation annuelle, vous bénéficiez de 20% de réduction sur le tarif mensuel. Le montant total est facturé en une seule fois au début de la période.</p></div>
+                <div class="faq-a"><p>Le quota prépayé est valable sur l'année civile et non remboursable. En revanche, si vous n'avez pas épuisé votre quota à renouvellement, contactez-nous — nous étudions les reports au cas par cas.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                    Quels modes de paiement acceptez-vous ?
+                    Puis-je changer de plan en cours d'année ?
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
-                <div class="faq-a"><p>Nous acceptons les virements bancaires, Mobile Money (MVola, Orange Money, Airtel Money) et les cartes Visa/Mastercard.</p></div>
+                <div class="faq-a"><p>Oui. Vous pouvez monter en plan à tout moment — la différence de quota est créditée prorata temporis. Contactez-nous et nous gérons la transition sans interruption.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                    Puis-je essayer le plan Pro avant de m'engager ?
+                    Y a-t-il un plan pour tester avant de s'engager ?
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
-                <div class="faq-a"><p>Oui. Contactez-nous et nous activons un accès Pro de 14 jours sur votre compte, sans engagement ni carte bancaire.</p></div>
+                <div class="faq-a"><p>Oui — l'environnement sandbox est gratuit et illimité. Dessinez vos plans, intégrez le widget, testez les réservations sans aucun engagement. Aucune carte bancaire requise.</p></div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- CTA -->
 <section class="wrap" style="padding-bottom:100px">
     <div class="cta-band">
         <h2>Prêt à remplir votre salle ?</h2>
-        <p>Créez votre compte en 2 minutes, dessinez votre plan et publiez votre premier événement aujourd'hui.</p>
-        <a href="https://bo.mitoera.com/register" class="btn btn-primary">Commencer gratuitement →</a>
+        <p>Créez votre compte, dessinez votre plan en quelques minutes et publiez votre premier événement aujourd'hui.</p>
+        <a href="/#contact" class="btn btn-primary">Nous contacter →</a>
     </div>
 </section>
 
@@ -295,45 +348,24 @@
     <div class="wrap">
         <div class="fgrid">
             <div>
-                <a href="/" class="logo" style="color:#fff;margin-bottom:16px">
+                <a href="/" class="logo" style="color:#fff;margin-bottom:14px">
                     <span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="8" rx="1"/><rect x="10" y="6" width="4" height="12" rx="1"/><rect x="17" y="10" width="4" height="8" rx="1"/></svg></span>
                     <span>Mitoera</span>
                 </a>
-                <p style="max-width:280px;margin-top:12px">Le module de réservation de salle interactif pour vos événements.</p>
+                <p style="max-width:260px;margin-top:12px;font-size:.88rem">Le module de réservation de salle interactif pour vos événements.</p>
             </div>
             <div><h4>Produit</h4><ul><li><a href="/">Accueil</a></li><li><a href="/pricing">Pricing</a></li></ul></div>
             <div><h4>Ressources</h4><ul><li><a href="https://docs.mitoera.com" target="_blank">Documentation</a></li><li><a href="#">Support</a></li></ul></div>
             <div><h4>Entreprise</h4><ul><li><a href="/#contact">Contact</a></li><li><a href="#">Mentions légales</a></li></ul></div>
         </div>
-        <div class="fcopy">
-            <span>© 2026 Mitoera. Tous droits réservés.</span>
-        </div>
+        <div class="fcopy">© 2026 Mitoera. Tous droits réservés.</div>
     </div>
 </footer>
 
 <script>
-    // Header scroll
     const hdr = document.getElementById('hdr');
-    window.addEventListener('scroll', () => {
-        hdr.classList.toggle('scrolled', window.scrollY > 40);
-    });
+    window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
 
-    // Billing toggle
-    const monthly = { p0: 'Gratuit', p1: '49 000', n0: '', n1: '' };
-    const annual  = { p0: 'Gratuit', p1: '39 200', n0: '', n1: 'soit 470 400 Ar/an' };
-    let isAnnual = false;
-
-    function toggleBilling() {
-        isAnnual = !isAnnual;
-        document.getElementById('billingToggle').classList.toggle('annual', isAnnual);
-        const data = isAnnual ? annual : monthly;
-        for (const [k, v] of Object.entries(data)) {
-            const el = document.getElementById(k);
-            if (el) el.textContent = v;
-        }
-    }
-
-    // FAQ
     function toggleFaq(btn) {
         const item = btn.closest('.faq-item');
         const wasOpen = item.classList.contains('open');
