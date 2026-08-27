@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Mitoera</title>
+<meta name="description" content="Questions fréquentes sur le fonctionnement, la facturation et les plans Mitoera.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+    :root{
+        --ink:#0c2233;
+        --sea:#0f7690;
+        --sea-deep:#0b5163;
+        --sun:#f2913a;
+        --coral:#ef6a4d;
+        --sand:#f7f1e8;
+        --cream:#fffdf9;
+        --line:#e7ddce;
+        --muted:#5f6f7a;
+        --shadow:0 18px 45px -22px rgba(12,34,51,.35);
+        --radius:22px;
+        --maxw:1240px;
+        --ease:cubic-bezier(.16,1,.3,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Tahoma,Geneva,Verdana,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.15;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+    a{color:inherit;text-decoration:none}
+    img,svg{max-width:100%;display:block}
+    em{font-style:italic;color:var(--coral)}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sea)}
+    .eyebrow::before{content:"";width:26px;height:2px;background:var(--sun);border-radius:2px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:100px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;text-decoration:none;font-family:inherit}
+    .btn-primary{background:var(--sun);color:#fff;box-shadow:0 14px 30px -10px rgba(242,145,58,.7)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 40px -12px rgba(242,145,58,.8)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+    .btn-ghost:hover{transform:translateY(-3px);border-color:var(--ink)}
+
+    /* Header */
+    header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,box-shadow .4s,padding .4s;padding:22px 0}
+    header.scrolled{background:rgba(255,253,249,.92);backdrop-filter:blur(14px);box-shadow:0 10px 30px -20px rgba(12,34,51,.4);padding:14px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.28rem;color:#fff;transition:color .4s}
+    header.scrolled .logo{color:var(--ink)}
+    .mark{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--sun),var(--coral));flex-shrink:0;box-shadow:0 10px 22px -10px rgba(239,106,77,.7)}
+    .menu{display:flex;gap:4px}
+    .menu a{padding:8px 16px;border-radius:100px;font-size:.92rem;font-weight:600;color:#fff;transition:background .3s,color .3s}
+    header.scrolled .menu a{color:var(--ink)}
+    .menu a:hover,.menu a.active{background:rgba(255,255,255,.15)}
+    header.scrolled .menu a:hover,header.scrolled .menu a.active{background:var(--sand);color:var(--sea)}
+    .nav-cta{display:flex;align-items:center;gap:14px}
+    .nav-cta .btn{padding:11px 22px;font-size:.9rem}
+
+    /* Hero */
+    .hero{padding:150px 0 80px;background:radial-gradient(ellipse at 10% 0%,#123a4d,var(--sea-deep) 50%,var(--ink));color:#fff;text-align:center;position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 100%,rgba(242,145,58,.15),transparent 60%);pointer-events:none}
+    .hero h1{font-size:clamp(2.2rem,4.5vw,3.4rem);margin:14px 0 18px}
+    .hero .sub{font-size:1.05rem;opacity:.8;max-width:520px;margin:0 auto}
+
+    /* Category nav */
+    .cat-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:48px 0 56px}
+    .cat-btn{padding:9px 20px;border-radius:100px;border:1.5px solid var(--line);font-size:.88rem;font-weight:600;color:var(--muted);background:#fff;cursor:pointer;transition:all .25s;font-family:inherit}
+    .cat-btn:hover,.cat-btn.active{background:var(--sea);color:#fff;border-color:var(--sea)}
+
+    /* FAQ sections */
+    .faq-sections{padding:0 0 100px}
+    .faq-group{max-width:760px;margin:0 auto 64px}
+    .faq-group-title{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--line)}
+    .faq-group-title h2{font-size:1.3rem;color:var(--ink)}
+    .faq-group-icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex-shrink:0}
+
+    .faq-item{border-bottom:1px solid var(--line)}
+    .faq-q{width:100%;background:none;border:none;padding:20px 0;text-align:left;font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-q svg{flex-shrink:0;transition:transform .3s var(--ease);color:var(--sea)}
+    .faq-item.open .faq-q svg{transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+    .faq-item.open .faq-a{max-height:400px}
+    .faq-a p{padding-bottom:20px;color:var(--muted);font-size:.92rem;line-height:1.75}
+    .faq-a p+p{margin-top:-8px}
+    .faq-a strong{color:var(--ink)}
+
+    /* Pills */
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:16px}
+    .pill{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;font-size:.8rem;font-weight:700;border:1.5px solid}
+    .pill-sun{background:rgba(242,145,58,.08);color:var(--sun);border-color:rgba(242,145,58,.3)}
+    .pill-sea{background:rgba(15,118,144,.08);color:var(--sea);border-color:rgba(15,118,144,.25)}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+    /* CTA band */
+    .cta-band{background:linear-gradient(135deg,var(--sea-deep),var(--sea));border-radius:32px;padding:64px;color:#fff;text-align:center;position:relative;overflow:hidden;margin-bottom:80px}
+    .cta-band::before{content:"";position:absolute;bottom:-80px;left:-40px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(242,145,58,.3),transparent 70%)}
+    .cta-band h2{color:#fff;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:14px;position:relative}
+    .cta-band p{opacity:.85;max-width:440px;margin:0 auto 28px;position:relative;font-size:.95rem}
+
+    /* Footer */
+    footer{background:var(--ink);color:rgba(255,255,255,.6);padding:56px 0 32px}
+    footer h4{color:#fff;font-family:Tahoma,sans-serif;font-size:.88rem;letter-spacing:.06em;margin-bottom:14px;text-transform:uppercase}
+    footer a:hover{color:#fff}
+    .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+    .fgrid ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:.88rem}
+    .fcopy{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.82rem}
+
+    @media(max-width:640px){
+        .hero h1{font-size:2rem}
+        .cta-band{padding:40px 24px;border-radius:22px}
+        .fgrid{grid-template-columns:1fr 1fr}
+        .menu{display:none}
+    }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+    <div class="wrap nav">
+        <a href="/" class="logo">
+            <span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="8" rx="1"/><rect x="10" y="6" width="4" height="12" rx="1"/><rect x="17" y="10" width="4" height="8" rx="1"/></svg></span>
+            <span>Mitoera</span>
+        </a>
+        <nav class="menu">
+            <a href="/pricing">Pricing</a>
+            <a href="/faq" class="active">FAQ</a>
+            <a href="https://docs.mitoera.com" target="_blank">Documentation</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+        <div class="nav-cta">
+            <a href="https://bo.mitoera.com/login" class="btn btn-primary">Se connecter</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="wrap">
+        <span class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.65)">FAQ</span>
+        <h1>Questions fréquentes</h1>
+        <p class="sub">Tout ce qu'il faut savoir sur le fonctionnement, la facturation et les plans Mitoera.</p>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sections">
+    <div class="wrap">
+
+        <!-- Facturation -->
+        <div class="faq-group" id="facturation">
+            <div class="faq-group-title">
+                <div class="faq-group-icon" style="background:rgba(15,118,144,.1)">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--sea)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                </div>
+                <h2>Facturation</h2>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Qu'est-ce qu'un siège "confirmé" (booked) ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a">
+                    <p>Mitoera distingue deux statuts intermédiaires :</p>
+                    <div class="pill-row">
+                        <div class="pill pill-sun"><span class="pill-dot"></span> Hold — panier en cours · <strong>gratuit</strong></div>
+                        <div class="pill pill-sea"><span class="pill-dot"></span> Booked — réservation confirmée · <strong>facturé</strong></div>
+                    </div>
+                    <p>Seul le statut <strong>booked</strong> — déclenché par votre back-end lors de la confirmation de paiement — est décompté de votre quota. Le hold peut expirer librement sans aucun coût.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Le hold est-il facturé ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Non, jamais. Le hold est entièrement gratuit, qu'il aboutisse à une réservation ou qu'il expire. Seul le passage au statut <strong>booked</strong> consomme votre quota.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Que se passe-t-il si je dépasse mon quota annuel ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Aucune interruption de service. Chaque siège confirmé au-delà du quota est facturé <strong>0,15 €</strong> et regroupé sur une facture mensuelle. Vous êtes notifié en temps réel de votre consommation depuis le tableau de bord.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Les sièges non utilisés sont-ils remboursés en fin d'année ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Le quota prépayé est valable sur l'année civile et non remboursable. Si vous n'avez pas épuisé votre quota à renouvellement, contactez-nous — nous étudions les reports au cas par cas.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Comment fonctionne la facturation du dépassement ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Le dépassement est calculé automatiquement chaque mois. Une facture récapitulative est émise pour tous les sièges confirmés au-delà de votre quota annuel, au tarif de <strong>0,15 € par siège</strong>.</p></div>
+            </div>
+        </div>
+
+        <!-- Plans -->
+        <div class="faq-group" id="plans">
+            <div class="faq-group-title">
+                <div class="faq-group-icon" style="background:rgba(242,145,58,.1)">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h2>Plans et abonnements</h2>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Quelle est la différence entre les plans Mora et Soa ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p><strong>Mora (300 €/an)</strong> inclut 2 500 sièges confirmés — soit 0,12 €/siège, −20 % par rapport au tarif à l'usage. <strong>Soa (575 €/an)</strong> inclut 5 000 sièges — soit 0,115 €/siège, −23 %. Au-delà, les deux plans facturent 0,15 €/siège. Soa ajoute également un support prioritaire.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Puis-je changer de plan en cours d'année ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Oui. Vous pouvez monter en plan à tout moment — la différence de quota est créditée prorata temporis. Contactez-nous et nous gérons la transition sans interruption de service.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Y a-t-il un plan pour tester avant de s'engager ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Oui — l'environnement sandbox est gratuit et illimité. Dessinez vos plans, intégrez le widget, testez les réservations sans aucun engagement. Aucune carte bancaire requise.</p></div>
+            </div>
+        </div>
+
+        <!-- Intégration -->
+        <div class="faq-group" id="integration">
+            <div class="faq-group-title">
+                <div class="faq-group-icon" style="background:rgba(239,106,77,.1)">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h2>Intégration technique</h2>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Comment intégrer le widget sur mon site ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Une seule balise <code style="background:var(--sand);padding:2px 6px;border-radius:5px;font-size:.85em">&lt;script&gt;</code> suffit. Consultez la <a href="https://docs.mitoera.com" style="color:var(--sea);font-weight:700">documentation</a> pour l'intégration complète avec les callbacks <code style="background:var(--sand);padding:2px 6px;border-radius:5px;font-size:.85em">onReady</code>, <code style="background:var(--sand);padding:2px 6px;border-radius:5px;font-size:.85em">onSeatSelected</code> et les méthodes publiques.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Comment gérer les sièges sélectionnés après une redirection (ex. connexion) ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Utilisez la méthode <strong>selectSeats(keys)</strong> combinée au localStorage. Avant la redirection, sauvegardez les clés des sièges sélectionnés ; au retour, dans le callback <code style="background:var(--sand);padding:2px 6px;border-radius:5px;font-size:.85em">onReady</code>, appelez <code style="background:var(--sand);padding:2px 6px;border-radius:5px;font-size:.85em">chart.selectSeats(keys)</code> pour restaurer la sélection. Exemple complet dans la <a href="https://docs.mitoera.com" style="color:var(--sea);font-weight:700">documentation</a>.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Le widget fonctionne-t-il sur mobile ?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Oui. Le widget adapte automatiquement l'expérience de navigation en trois étapes sur mobile : vue d'ensemble, zoom section, puis zoom détail avec sélection du siège. Le comportement pinch-to-zoom et pan tactile est natif.</p></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="wrap" style="padding-bottom:100px">
+    <div class="cta-band">
+        <h2>Vous n'avez pas trouvé votre réponse ?</h2>
+        <p>Contactez-nous directement — nous répondons généralement sous 24 h.</p>
+        <a href="/#contact" class="btn btn-primary">Nous contacter →</a>
+    </div>
+</section>
+
+<footer>
+    <div class="wrap">
+        <div class="fgrid">
+            <div>
+                <a href="/" class="logo" style="color:#fff;margin-bottom:14px">
+                    <span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="8" rx="1"/><rect x="10" y="6" width="4" height="12" rx="1"/><rect x="17" y="10" width="4" height="8" rx="1"/></svg></span>
+                    <span>Mitoera</span>
+                </a>
+                <p style="max-width:260px;margin-top:12px;font-size:.88rem">Le module de réservation de salle interactif pour vos événements.</p>
+            </div>
+            <div><h4>Produit</h4><ul><li><a href="/">Accueil</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/faq">FAQ</a></li></ul></div>
+            <div><h4>Ressources</h4><ul><li><a href="https://docs.mitoera.com" target="_blank">Documentation</a></li><li><a href="#">Support</a></li></ul></div>
+            <div><h4>Entreprise</h4><ul><li><a href="/#contact">Contact</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+        </div>
+        <div class="fcopy">© 2026 Mitoera. Tous droits réservés.</div>
+    </div>
+</footer>
+
+<script>
+    const hdr = document.getElementById('hdr');
+    window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
+
+    function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+    }
+</script>
+</body>
+</html>
