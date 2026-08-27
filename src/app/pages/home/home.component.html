@@ -63,62 +63,6 @@
     </div>
   </div>
 
-  <!-- Editor démo -->
-  <div class="editor reveal" style="margin-top:40px">
-    <div class="editor__toolbar">
-      <div class="tb-group">
-        <div class="tb-title">Outils</div>
-        <button class="tool-btn" id="addRowBtn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Ajouter rangée
-        </button>
-        <button class="tool-btn" id="resetToolBtn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
-          Réinitialiser
-        </button>
-      </div>
-      <div class="tb-group">
-        <div class="tb-title">Catégories</div>
-        <div class="cat-row" data-pulse-category="vip">
-          <span class="cat-dot cat-dot--vip"></span>
-          <span class="cat-row__name">VIP</span>
-          <span class="cat-row__price">45 €</span>
-        </div>
-        <div class="cat-row" data-pulse-category="standard">
-          <span class="cat-dot cat-dot--standard"></span>
-          <span class="cat-row__name">Standard</span>
-          <span class="cat-row__price">25 €</span>
-        </div>
-        <div class="cat-row" data-pulse-category="balcon">
-          <span class="cat-dot cat-dot--balcon"></span>
-          <span class="cat-row__name">Balcon</span>
-          <span class="cat-row__price">15 €</span>
-        </div>
-      </div>
-      <div class="tb-group">
-        <div class="tb-title">Zoom</div>
-        <div class="zoom-row">
-          <button class="zoom-btn" id="zoomOut">−</button>
-          <span class="zoom-label" id="zoomLabel">100%</span>
-          <button class="zoom-btn" id="zoomIn">+</button>
-          <button class="reset-link" id="resetZoom">Reset</button>
-        </div>
-      </div>
-    </div>
-    <div class="editor__canvas">
-      <div class="stage-label">SCÈNE</div>
-      <div class="stage-wrap" id="stageWrap"></div>
-    </div>
-    <div class="editor__sidebar">
-      <h3>Sélection</h3>
-      <ul class="cart-list" id="cartList"></ul>
-      <div class="cart-total">
-        <span>Total</span>
-        <strong id="cartTotal">0 €</strong>
-      </div>
-      <button class="btn btn-primary" style="width:100%" id="addToCartBtn">Réserver →</button>
-    </div>
-  </div>
 </section>
 
 <!-- Fonctionnalités -->
@@ -194,4 +138,3 @@
   </div>
 </section>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LcmI5stAAAAAPX33gdcNMel6OMVDzrbsx6V2gAg" async defer></script>
