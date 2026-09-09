@@ -2,15 +2,14 @@ header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   transition: background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
   padding: 22px 0;
-  background: rgba(255,253,249,0);
+  background: rgba(255,255,255,0);
 
   &.scrolled {
-    background: rgba(255,253,249,.92);
+    background: rgba(255,255,255,.92);
     backdrop-filter: blur(14px);
-    box-shadow: 0 10px 30px -20px rgba(12,34,51,.4);
+    box-shadow: 0 10px 30px -20px rgba(0,0,0,.4);
     padding: 14px 0;
 
-    .logo { color: var(--ink); }
     .menu a { color: var(--ink); }
     .menu a:hover, .menu a.active { background: var(--sand); color: var(--sea); }
     .burger span { background: var(--ink); }
@@ -19,14 +18,18 @@ header {
 
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 
+/* Deux variantes du logo (texte blanc / texte noir, fond transparent) :
+   celle qui correspond au fond du header courant reste seule visible. */
 .logo {
-  display: flex; align-items: center; gap: 12px;
-  font-weight: 800; font-size: 1.28rem; color: #fff; transition: color .4s;
-  .mark {
-    width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
-    background: linear-gradient(135deg,var(--sun),var(--coral)); flex-shrink: 0;
-    box-shadow: 0 10px 22px -10px rgba(239,106,77,.7);
+  display: flex; align-items: center;
+  img {
+    height: 72px; width: auto; display: block;
   }
+  .logo-for-light-bg { display: none; }
+}
+header.scrolled .logo {
+  .logo-for-dark-bg { display: none; }
+  .logo-for-light-bg { display: block; }
 }
 
 .menu {
@@ -55,7 +58,7 @@ header {
 .mobile-menu {
   display: none; flex-direction: column; gap: 4px; background: #fff;
   max-height: 0; overflow: hidden; transition: max-height .4s var(--ease);
-  box-shadow: 0 20px 40px -20px rgba(12,34,51,.3);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,.3);
   &.open { max-height: 420px; }
   a { padding: 16px 24px; color: var(--ink); font-weight: 600; font-size: 1.02rem; border-top: 1px solid var(--line); }
   .btn { margin: 16px 24px 20px; justify-content: center; }
