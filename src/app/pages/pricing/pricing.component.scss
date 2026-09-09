@@ -45,7 +45,8 @@
   &--text { font-size: 1.35rem; } }
 .seats-label { font-size: .82rem; color: var(--muted); line-height: 1.4; }
 .plan-overage { font-size: .82rem; color: var(--muted); margin-top: auto; margin-bottom: 28px; padding: 10px 14px; background: var(--sand); border-radius: 10px; line-height: 1.5; strong { color: var(--ink); } }
-.plan-cta { width: 100%; margin-bottom: 32px; font-size: 1rem; padding: 15px; }
+.plan-cta { width: 100%; margin-bottom: 32px; font-size: 1rem; padding: 15px; transition: background .3s, border-color .3s, color .3s; }
+.plan:hover .plan-cta:not(.btn-primary) { background: var(--sea); border-color: var(--sea); color: #fff; }
 .plan-sep { height: 1px; background: var(--line); margin-bottom: 26px; }
 .plan-features { list-style: none; display: flex; flex-direction: column; gap: 13px;
   li { display: flex; align-items: flex-start; gap: 10px; font-size: .9rem;
