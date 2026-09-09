@@ -23,7 +23,7 @@
   background: #fff; border-radius: var(--radius); border: 1.5px solid var(--line); padding: 40px 32px; position: relative;
   display: flex; flex-direction: column;
   transition: transform .4s var(--ease),box-shadow .4s var(--ease);
-  &:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  &:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--sea); background: linear-gradient(160deg,#fff 60%,rgba(224,0,0,.04)); }
   &--featured { border-color: var(--sea); background: linear-gradient(160deg,#fff 60%,rgba(224,0,0,.04)); }
 }
 .plan-tag { display: inline-flex; align-self: flex-start; align-items: center; gap: 6px; background: linear-gradient(135deg,var(--sea),var(--sea-deep)); color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
